@@ -12,7 +12,7 @@ package com.crashlibrary.util;
  */
 public class CrashLogUtil {
 
-    private static final String TAG = "pei";
+    private static final String TAG = "crash";
     private static final String LEVEL_I = "i";
     private static final String LEVEL_D = "d";
     private static final String LEVEL_W = "w";
