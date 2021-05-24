@@ -1,4 +1,5 @@
-# CrashPro
+# CrashPro  
+[![](https://jitpack.io/v/ShaoqiangPei/CrashPro.svg)](https://jitpack.io/#ShaoqiangPei/CrashPro)
 
 ## 简介
 一个捕获异常的工具库
