@@ -1,7 +1,6 @@
 package com.crashlibrary.app;
 
 import android.app.Application;
-
 import com.crashlibrary.util.CrashLogUtil;
 
 /**
