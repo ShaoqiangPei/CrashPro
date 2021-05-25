@@ -8,6 +8,8 @@ import android.text.style.ForegroundColorSpan;
 
 import androidx.core.content.ContextCompat;
 
+import com.crashlibrary.app.CrashConfig;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -125,9 +127,9 @@ public class CrashUtil {
      * @param color  设置的颜色,如：R.color.red
      * @return
      */
-    public static SpannableString setTextFrontColor(SpannableString source, int index1, int index2, int color, Context context){
+    public static SpannableString setTextFrontColor(SpannableString source, int index1, int index2, int color){
         if(source!=null) {
-            int colorVaule = ContextCompat.getColor(context, color);
+            int colorVaule = ContextCompat.getColor(CrashConfig.getInstance().getApplication(), color);
             ForegroundColorSpan fcs=new ForegroundColorSpan(colorVaule);
             source.setSpan(fcs,index1, index2, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             return source;

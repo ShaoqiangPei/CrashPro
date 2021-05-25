@@ -1,6 +1,5 @@
 package com.crashlibrary.local_crash;
 
-import android.content.Context;
 import android.os.Looper;
 import android.text.SpannableString;
 import android.util.Log;
@@ -33,8 +32,6 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     //系统默认的UncaughtException处理类
     private Thread.UncaughtExceptionHandler mDefaultHandler = null;
 
-    // 程序的Context对象
-    private Context mContext = null;
     private OnCrashListener mOnCrashListener;
 
     //是否打开捕捉异常模式
@@ -53,11 +50,9 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     /**
      * 初始化
      *
-     * @param context
      */
-    public void init(Context context,boolean isCatch,OnCrashListener listener) {
+    public void init(boolean isCatch,OnCrashListener listener) {
         mCatch=isCatch;
-        mContext = context;
         this.mOnCrashListener=listener;
         if(mCatch) {
             // 获取系统默认的UncaughtException处理器
@@ -135,7 +130,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
 
             //弹出错误提示pop
             SpannableString sp= translate(message);
-            CrashPopUtil.canShow(sp,mContext, new View.OnClickListener(){
+            CrashPopUtil.canShow(sp, new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
                     //退出app
@@ -188,7 +183,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
                 CrashLogUtil.i("======3====sp="+sp);
                 for (Map map:indexList) {
                     CrashLogUtil.i("======it====key="+map.get(mCrashKey)+"    value="+map.get(mCrashValue));
-                    sp = CrashUtil.setTextFrontColor(sp,(int)map.get(mCrashKey),((int)map.get(mCrashValue))+1, R.color.red,mContext);
+                    sp = CrashUtil.setTextFrontColor(sp,(int)map.get(mCrashKey),((int)map.get(mCrashValue))+1, R.color.red);
                 }
             }
         }

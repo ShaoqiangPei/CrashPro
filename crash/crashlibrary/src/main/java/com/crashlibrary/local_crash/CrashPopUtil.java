@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.crashlibrary.R;
+import com.crashlibrary.app.CrashConfig;
 import com.crashlibrary.util.CrashLogUtil;
 import com.crashlibrary.util.ScreenUtil;
 
@@ -37,15 +38,15 @@ public class CrashPopUtil {
     public static boolean mCatch=false;
 
     /**弹出pop**/
-    private static void showPop(Object message,Context context,View.OnClickListener listener){
+    private static void showPop(Object message,View.OnClickListener listener){
         if(isShown){
             CrashLogUtil.i("======已经弹出显示了======");
             return;
         }
         isShown=true;
         // 获取WindowManager
-        mWindowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        mView = setUpView(message,listener,context);
+        mWindowManager = (WindowManager) CrashConfig.getInstance().getApplication().getSystemService(Context.WINDOW_SERVICE);
+        mView = setUpView(message,listener);
         WindowManager.LayoutParams params=new WindowManager.LayoutParams();
         // 类型
         params.type = Build.VERSION.SDK_INT < Build.VERSION_CODES.O ? WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY : WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY; //兼容了8.0
@@ -65,8 +66,8 @@ public class CrashPopUtil {
         mWindowManager.addView(mView, params);
     }
 
-    private static View setUpView(Object obj,View.OnClickListener listener,Context context) {
-        View view = LayoutInflater.from(context).inflate(R.layout.crash_pop, null);
+    private static View setUpView(Object obj,View.OnClickListener listener) {
+        View view = LayoutInflater.from(CrashConfig.getInstance().getApplication()).inflate(R.layout.crash_pop, null);
         TextView mTvContent = view.findViewById(R.id.mTvContent);
         Button mBtnExit = view.findViewById(R.id.mBtnExit);
         //显示内容
@@ -101,22 +102,22 @@ public class CrashPopUtil {
     }
 
     /**弹出错误pop**/
-    public static void canShow(Object message,Context context,View.OnClickListener listener) {
+    public static void canShow(Object message,View.OnClickListener listener) {
         if (mCatch) {
-            if (hasPermission(context)) {
-                showPop(message, context, listener);
+            if (hasPermission()) {
+                showPop(message, listener);
             } else {
                 //跳转设置悬浮窗界面
-                goSetPop(context);
+                goSetPop();
             }
         }
     }
 
     /**是否已开启悬浮窗权限**/
-    public static boolean hasPermission(Context context){
+    public static boolean hasPermission(){
         if(mCatch) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (Settings.canDrawOverlays(context)) {
+                if (Settings.canDrawOverlays(CrashConfig.getInstance().getApplication())) {
                     return true;
                 } else {
                     return false;
@@ -129,11 +130,11 @@ public class CrashPopUtil {
     }
 
     /**跳转设置悬浮窗界面**/
-    public static void goSetPop(Context context) {
+    public static void goSetPop() {
         if(mCatch) {
             //跳转设置界面
             Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
-            context.startActivity(intent);
+            CrashConfig.getInstance().getApplication().startActivity(intent);
         }
     }
 
