@@ -29,7 +29,6 @@ public class AppContext extends Application {
         CrashConfig.getInstance().init(this)
                 //true:打开log调试模式,默认为false
                 .setDebug(true);
-
         //初始化本地crash捕捉
         CrashHandler.getInstance().init(true, new CrashHandler.OnCrashListener() {
             @Override

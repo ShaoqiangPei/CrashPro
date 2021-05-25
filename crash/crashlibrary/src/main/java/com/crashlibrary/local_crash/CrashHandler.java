@@ -1,11 +1,13 @@
 package com.crashlibrary.local_crash;
 
+import android.app.Application;
 import android.os.Looper;
 import android.text.SpannableString;
 import android.util.Log;
 import android.view.View;
 import androidx.annotation.NonNull;
 import com.crashlibrary.R;
+import com.crashlibrary.app.CrashConfig;
 import com.crashlibrary.util.CrashLogUtil;
 import com.crashlibrary.util.CrashUtil;
 import com.crashlibrary.util.StringUtil;
@@ -52,6 +54,10 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
      *
      */
     public void init(boolean isCatch,OnCrashListener listener) {
+        //检测crash库是否已初始化
+        CrashConfig.getInstance().getApplication();
+
+        //已初始化继续执行流程
         mCatch=isCatch;
         this.mOnCrashListener=listener;
         if(mCatch) {
