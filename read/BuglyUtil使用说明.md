@@ -8,7 +8,8 @@
 在自定义`Application`类`onCreate()`中初始化:
 ```
 //debug: 输出详细的Bugly SDK的Log,建议在测试阶段建议设置成true，发布时设置为false
-BuglyUtil.init("你申请的AppId",debug);
+//context: Application实例
+BuglyUtil.init("你申请的AppId",debug,context);
 ```
 #### 二.测试bugly异常上报能力
 在需要制造bug的地方调用以下方法：
