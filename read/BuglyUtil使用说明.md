@@ -17,7 +17,7 @@ BuglyUtil.init("你申请的AppId",debug,context);
 BuglyUtil.testCrash();
 ```
 #### 三.使用注意事项
-若你的项目中同时集成了`BuglyUtil(即bugly功能)`和`CrashHandler`,请熟读以下文章
+若你的项目中同时集成了`BuglyUtil(即bugly功能)`和`CrashHandler`,请熟读以下文章  
 [捕捉异常注意事项](https://github.com/ShaoqiangPei/CrashPro/blob/master/read/%E6%8D%95%E6%8D%89%E5%BC%82%E5%B8%B8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9.md)
 #### 四.更多
 更多关于`Bugly异常上报`的使用，可参考文章
