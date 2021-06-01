@@ -2,7 +2,10 @@
 [![](https://jitpack.io/v/ShaoqiangPei/CrashPro.svg)](https://jitpack.io/#ShaoqiangPei/CrashPro)
 
 ## 简介
-一个捕获异常的工具库
+本工具库具有以下能力:  
+- 捕获本地异常
+- `bugly`捕获远程异常
+- `bugly`全量更新(版本升级)
 
 ## 使用说明
 ### 一. 库依赖
@@ -22,6 +25,13 @@
 	        implementation 'com.github.ShaoqiangPei:CrashPro:0.0.1'
 	}
 ```
+**需要注意的是,若你项目中之前已经集成过`Bugly`库,如以下引用:**
+```
+        implementation 'com.tencent.bugly:crashreport_upgrade:latest.release'
+        implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+```
+**则你需要把以上依赖给注释掉，因为本库依赖中已涵盖以上功能。**  
+
 在你项目的自定义`Application`类的`onCreate()`中初始化本库：
 ```
 public class AppContext extends MyApplication {
