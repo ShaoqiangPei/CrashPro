@@ -160,7 +160,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         if(StringUtil.isEmpty(info)){
             return;
         }
-        Log.e("pei","***************错误信息****************\n$info");
+        Log.e("pei","***************错误信息****************\n"+info);
         if(mOnCrashListener!=null){
             mOnCrashListener.uploadInfo(info);
         }
