@@ -65,17 +65,17 @@ BuglyUtil.testCrash();
 注意,`FileProvider`类是在`support-v4`包中的，检查你的工程是否引入该类库。  
 若你项目中已经引用过`FileProvider`, 则需要通过继承`FileProvider`类来解决合并冲突的问题，示例如下：
 ```
-<provider
-    android:name=".utils.BuglyFileProvider"
-    android:authorities="${applicationId}.fileProvider"
-    android:exported="false"
-    android:grantUriPermissions="true"
-    tools:replace="name,authorities,exported,grantUriPermissions">
-    <meta-data
-        android:name="android.support.FILE_PROVIDER_PATHS"
-        android:resource="@xml/provider_paths"
-        tools:replace="name,resource"/>
-</provider>
+        <provider
+            android:name="com.tencent.bugly.beta.utils.BuglyFileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="name,authorities,exported,grantUriPermissions">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/bugly_provider_path"
+                tools:replace="name,resource"/>
+        </provider>
 ```
 ##### 3.4 手动检测版本
 在已经初始化的前提下。`Bugly.init(getApplicationContext(), "注册时申请的APPID", false);`方法会在app启动后自动检测版本。  
