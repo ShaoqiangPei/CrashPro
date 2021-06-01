@@ -49,7 +49,7 @@ public class AppContext extends MyApplication {
 }
 ```
 ### 二. 主要功能类
-[BuglyUtil](https://github.com/ShaoqiangPei/CrashPro/blob/master/read/BuglyUtil%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ———— 集成`Bugly`异常上报功能  
+[BuglyUtil](https://github.com/ShaoqiangPei/CrashPro/blob/master/read/BuglyUtil%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ———— 集成`Bugly`异常上报功能, `Bugly`全量更新app版本功能  
 [CrashHandler](https://github.com/ShaoqiangPei/CrashPro/blob/master/read/CrashHandler%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E.md) ———— 本地异常捕捉工具类  
 
 ### 三. Log开关及查看Log
