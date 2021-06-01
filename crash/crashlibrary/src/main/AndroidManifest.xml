@@ -18,6 +18,8 @@
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:theme="@android:style/Theme.Translucent" />
 
+
+
     </application>
 
 </manifest>

@@ -86,7 +86,7 @@ dependencies {
     androidTestImplementation librarys.androidTestImplementation_espresso
 
     //bugly
-    implementation librarys.implementation_crashreport_upgrade
+    api librarys.api_crashreport_upgrade
     implementation librarys.implementation_nativecrashreport
 
 }
