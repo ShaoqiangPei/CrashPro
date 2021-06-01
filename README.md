@@ -63,3 +63,11 @@ CrashConfig.getInstance().setDebug(true);//是否开启本库内部log打印(默
 #### 3.2 查看本库内部log打印
 在开启本库内部log打印的情况下，你可以将你logcat的tag设置为crash,用以查看本库内部log打印日志。
 本库内部日志 tag=“crash”，log打印级别多为 i。
+
+### 四. 添加混淆
+如若项目需要，为了避免混淆SDK，在Proguard混淆文件中增加以下配置：
+```
+-dontwarn com.tencent.bugly.**
+-keep public class com.tencent.bugly.**{*;}
+-keep class android.support.**{*;}
+```
